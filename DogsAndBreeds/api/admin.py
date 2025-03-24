@@ -1,3 +1,11 @@
 from django.contrib import admin
+from .models import Breed, Dog
 
-# Register your models here.
+
+@admin.register(Breed)
+class BreedAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Dog)
+class DogAdmin(admin.ModelAdmin):
+    pass

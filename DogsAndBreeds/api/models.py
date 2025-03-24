@@ -2,15 +2,15 @@ from django.db import models
 
 
 CHOICES_SIZES = (
-    ('TN', 'Tiny'),
-    ('SL', 'Small'),
-    ('MD', 'Medium'),
-    ('LG', 'Large'),
+    ('Tiny', 'Tiny'),
+    ('Small', 'Small'),
+    ('Medium', 'Medium'),
+    ('Large', 'Large'),
 )
 
 CHOICES_GENDER = (
-    ('FM', 'Female'),
-    ('ML', 'Male'),
+    ('Female', 'Female'),
+    ('Male', 'Male'),
 )
 
 class Breed(models.Model):
@@ -48,7 +48,7 @@ class Breed(models.Model):
 class Dog(models.Model):
     name = models.CharField("Имя собаки", max_length=50)
     age = models.IntegerField("Возраст")
-    breed = models.ForeignKey(Breed, on_delete=models.CASCADE)
+    breed = models.ForeignKey(Breed, on_delete=models.CASCADE, related_name='dogs')
     gender = models.CharField("Пол собаки", choices=CHOICES_GENDER, max_length=6)
     color = models.CharField("Цвет", max_length=50)
     favorite_food = models.CharField("Любимая еда", max_length=255)
