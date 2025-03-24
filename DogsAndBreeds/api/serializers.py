@@ -26,7 +26,11 @@ class DogSerializer(serializers.ModelSerializer):
     breed = BreedSerializer(read_only=True)
     avg_age = serializers.FloatField(read_only=True)
     same_breed_count = serializers.IntegerField(read_only=True)
-
+    breed_id = serializers.PrimaryKeyRelatedField(
+        queryset=Breed.objects.all(),
+        source='breed',
+        write_only=True
+    )
     class Meta:
         model = Dog
         fields = '__all__'
